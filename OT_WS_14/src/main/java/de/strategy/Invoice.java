@@ -1,16 +1,21 @@
-package de.builder;
+package de.strategy;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import de.builder.Money;
+import de.strategy.InvoiceHeader;
+import de.strategy.Money;
 
 public class Invoice {
 	private final List<LineItem> lineItems= new ArrayList<LineItem>();
+	private final InvoiceHeader head;
+	private final valueAddedTaxCalc calc;
 	
-	public Invoice(List<LineItem> lineItems){
+	public Invoice(List<LineItem> lineItems, InvoiceHeader head, valueAddedTaxCalc calc){
 		this.lineItems.addAll(lineItems);
+		this.head=head;
+		this.calc=calc;
 	}
 	
 	/**
@@ -34,5 +39,22 @@ public class Invoice {
 		return Collections.unmodifiableList(lineItems);
 	}
 
+	public InvoiceHeader getHead() {
+		return head;
+	}
+	
+
+	public valueAddedTaxCalc getCalc() {
+		return calc;
+	}
+	
+	public Money getGrossInvoiceSum() {
+		return getInvoiceSum().add(getVat());
+	}
+	
+	public Money getVat() {
+		return calc.vatOfInvoice(this);
+		
+	}
 
 }

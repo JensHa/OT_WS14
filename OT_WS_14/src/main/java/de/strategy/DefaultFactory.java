@@ -1,4 +1,4 @@
-package de.abstractfacory;
+package de.strategy;
 
 
 public class DefaultFactory implements InvoiceHeaderFactory {
@@ -9,10 +9,6 @@ public class DefaultFactory implements InvoiceHeaderFactory {
 		return new InvoiceHeader(receiver,System.currentTimeMillis(),invoiceId);
 	}
 
-	/**
-	 * Increments the invoice id
-	 * @return the next invoice id
-	 */
 	private int nextInvoiceId() {
 		lastGivenInvoiceId++;
 		return lastGivenInvoiceId;

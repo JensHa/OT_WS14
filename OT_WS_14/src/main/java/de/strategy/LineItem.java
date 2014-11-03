@@ -1,6 +1,6 @@
-package de.builder;
+package de.strategy;
 
-import de.builder.Money;
+import de.strategy.Money;
 
 public class LineItem {
 	private final String description;

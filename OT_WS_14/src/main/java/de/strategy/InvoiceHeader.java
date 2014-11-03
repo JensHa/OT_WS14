@@ -1,4 +1,4 @@
-package de.abstractfacory;
+package de.strategy;
 
 
 public class InvoiceHeader{

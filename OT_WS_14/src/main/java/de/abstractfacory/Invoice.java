@@ -1,16 +1,19 @@
-package de.builder;
+package de.abstractfacory;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import de.builder.Money;
+import de.abstractfacory.InvoiceHeader;
+import de.abstractfacory.Money;
 
 public class Invoice {
 	private final List<LineItem> lineItems= new ArrayList<LineItem>();
+	private final InvoiceHeader head;
 	
-	public Invoice(List<LineItem> lineItems){
+	public Invoice(List<LineItem> lineItems, InvoiceHeader head){
 		this.lineItems.addAll(lineItems);
+		this.head=head;
 	}
 	
 	/**
@@ -34,5 +37,8 @@ public class Invoice {
 		return Collections.unmodifiableList(lineItems);
 	}
 
+	public InvoiceHeader getHead() {
+		return head;
+	}
 
 }

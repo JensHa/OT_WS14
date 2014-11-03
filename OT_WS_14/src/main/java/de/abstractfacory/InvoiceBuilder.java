@@ -1,4 +1,4 @@
-package de.builder;
+package de.abstractfacory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,6 +7,7 @@ import de.abstractfacory.InvoiceHeader;
 
 public class InvoiceBuilder {
 	private final List<LineItem> lineItems= new ArrayList<LineItem>();
+	private InvoiceHeader head;
 	
 	public InvoiceBuilder(){
 	}
@@ -16,9 +17,16 @@ public class InvoiceBuilder {
 		return this;
 	}
 	
-	public Invoice create(){
-		return new Invoice(lineItems);
+	public void setHead(InvoiceHeader head) {
+		this.head = head;
 	}
+	
+	public Invoice create(){
+		return new Invoice(lineItems, head);
+	}
+
+
+
 
 
 }

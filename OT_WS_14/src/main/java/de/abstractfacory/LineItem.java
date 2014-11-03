@@ -1,6 +1,6 @@
-package de.builder;
+package de.abstractfacory;
 
-import de.builder.Money;
+import de.abstractfacory.Money;
 
 public class LineItem {
 	private final String description;
